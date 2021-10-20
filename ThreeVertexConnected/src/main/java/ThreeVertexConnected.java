@@ -7,6 +7,11 @@ import com.mathsystem.graphapi.Vertex;
 import com.mathsystem.plugin.GraphProperty;
 
 public class ThreeVertexConnected implements GraphProperty {
+
+    //          Функция добавляет рёбра, из которых состоит найденный путь, в список исключённых
+    //  start - дочерняя вершина. Находим её родителя(вершину, из которой пришли в неё при обходе в ширину) и добавляем связывающее их ребро
+    //  в список исключённых. Далее рекурсивно вызываем эту функцию, рассматривая родителя как дочернюю вершину другой вершины
+    //  повторяем, пока не дойдём до стартовой вершины(её родитель null)
     private void BuildPath(Vertex start, ArrayList<Vertex> parents, ArrayList<Vertex> children, ArrayList<AbstractEdge> excluded){
         var other = parents.get(children.indexOf(start));
         if(other != null) {
@@ -19,6 +24,9 @@ public class ThreeVertexConnected implements GraphProperty {
         }
     }
 
+    // Обходом в ширину проверяем, существует ли путь между двумя вершинами
+    // Если путь существует, запоминаем его рёбра, чтобы не ходить по ним при очередном поиске пути
+    // по исключённым рёбрам не ходим
     private boolean PathExist(Vertex start, Vertex end, ArrayList<AbstractEdge> excluded)
     {
         var queue = new LinkedList<Vertex>();
@@ -50,6 +58,8 @@ public class ThreeVertexConnected implements GraphProperty {
         return false;
     }
 
+    // Для всех возможных пар вершин проверяем, существует ли между ними три непересекающихся пути
+    // excluded содержит рёбра найденных ранее путей
     @Override
     public boolean execute(AbstractGraph abstractGraph) {
         var vertexList = abstractGraph.getVertices();
