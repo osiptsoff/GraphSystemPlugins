@@ -4,7 +4,6 @@ import com.mathsystem.plugin.GraphCharacteristic;
 public class VertexesDegreesSum implements GraphCharacteristic {
     @Override
     public Integer execute(AbstractGraph abstractGraph) {
-
-        return null;
+        return abstractGraph.getEdgeCount() * 2;
     }
 }
