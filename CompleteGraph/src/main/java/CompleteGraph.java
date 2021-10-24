@@ -4,6 +4,6 @@ import com.mathsystem.plugin.GraphProperty;
 public class CompleteGraph implements GraphProperty {
     @Override
     public boolean execute(AbstractGraph abstractGraph) {
-        return false;
+        return (abstractGraph.getVertexCount() * (abstractGraph.getVertexCount() - 1) / 2) == abstractGraph.getEdgeCount();
     }
 }
