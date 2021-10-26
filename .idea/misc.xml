@@ -5,6 +5,7 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/ThreeVertexConnected/pom.xml" />
+        <option value="$PROJECT_DIR$/CompleteGraph/pom.xml" />
         <option value="$PROJECT_DIR$/VertexesDegreesSum/pom.xml" />
       </list>
     </option>
