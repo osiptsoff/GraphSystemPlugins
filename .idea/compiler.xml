@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="ThreeVertexConnected" />
         <module name="CompleteGraph" />
+        <module name="VertexesDegreesSum" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
