@@ -1,4 +1,0 @@
-2 1
-0 gray 0 null
-1 gray 0 null
-0 1 0 gray null 0
