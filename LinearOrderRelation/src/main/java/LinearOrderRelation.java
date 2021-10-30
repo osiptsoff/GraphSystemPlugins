@@ -33,32 +33,20 @@ public class LinearOrderRelation implements GraphProperty {
     // Проверяем, есть ли ребро из А в В. Если нет - бинарное отношение не транзитивно
     public boolean isTransitive(ArrayList<AbstractEdge> edges, int edgesCount){
         var b = true;
-        //var neigh = new ArrayList<Vertex>();
-        int temp;
-
-        for(int i = 0; i < edgesCount; i++) {
-            var flag = false;
+        for(int i = 0; i < edgesCount && b; i++) {
             var start1 = edges.get(i).either();
+            var edgesFromS1 = start1.getEdgeList();
             var end1 = edges.get(i).other(start1);
-            for(int j = i; j < edgesCount; j++) {
-                var start2 = edges.get(j).either();
-                if (start2 == end1){
-                    var end2 = edges.get(j).other(start2);
-                    temp = i;
-                    while (temp < edgesCount && !flag){
-                        if (edges.get(temp).either() == start1){
-                            start1 = edges.get(temp).either();
-                            if (edges.get(temp).other(start1) == end2){
-                                flag = true;
-                            }
-                        }
-                        temp++;
-                    }
-                    if (!flag) {
-                        b = false;
-                        i = j = edgesCount;
-                    }
+            var edgesFromE1 = end1.getEdgeList();
+            for(AbstractEdge abstractEdge : edgesFromE1) {
+                var end2 = abstractEdge.other(end1);
+                var countNotToE2 = 0;
+                for (AbstractEdge abstractEdge0 : edgesFromS1) {
+                    if (abstractEdge0.other(start1) != end2)
+                        countNotToE2++;
                 }
+                if (countNotToE2 == edgesFromS1.size())
+                    b = false;
             }
         }
         return b;
@@ -73,14 +61,12 @@ public class LinearOrderRelation implements GraphProperty {
     public boolean isLinear(ArrayList<Vertex> vertices, int vertexCount, ArrayList<AbstractEdge> edges, int edgesCount){
         boolean b = true;
         var usedV = new ArrayList<Vertex>();
-        var viewedE = new ArrayList<AbstractEdge>();
         for (int k = 0; k < vertexCount && b; k++) {
             var v = vertices.get(k);
             var edgesFromV = v.getEdgeList();
             for (AbstractEdge abstractEdge : edgesFromV) {
                 var neigh = abstractEdge.other(v);
                 usedV.add(neigh);
-                if (!viewedE.contains(abstractEdge)) viewedE.add(abstractEdge);
             }
 
             for (int i = 0; i < vertexCount; i++) {
@@ -88,27 +74,26 @@ public class LinearOrderRelation implements GraphProperty {
                 if (i != k) {
                     if (!usedV.contains(w)) {
                         var edgesFromW = w.getEdgeList();
-                        var flag = false;
                         if (edgesFromW.size() != 0) {
+                            var countNotToV = 0;
                             for (AbstractEdge abstractEdge : edgesFromW) {
-                                if (abstractEdge.other(w) == v) {
-                                    flag = true;
-                                    i = vertexCount;
-                                }
-                                if (!viewedE.contains(abstractEdge)){
-                                    viewedE.add(abstractEdge);
+                                if (abstractEdge.other(w) != v) {
+                                    countNotToV++;
                                 }
                             }
+                            if (countNotToV == edgesFromW.size())
+                                b = false;
                         } else {
+                            var countToW = 0;
                             for (int j = 0; j < edgesCount; j++){
                                 var start = edges.get(j).either();
                                 if (edges.get(j).other(start) == w) {
-                                    flag = true;
-                                    j = edgesCount;
+                                    countToW++;
                                 }
                             }
+                            if (countToW != vertexCount)
+                                b = false;
                         }
-                        b = flag;
                     }
                 }
 
@@ -142,4 +127,3 @@ public class LinearOrderRelation implements GraphProperty {
         return result;
     }
 }
-
