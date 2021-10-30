@@ -6,9 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="LinearOrderRelation" />
+        <module name="VertexesDegreesSum" />
         <module name="ThreeVertexConnected" />
         <module name="CompleteGraph" />
-        <module name="VertexesDegreesSum" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
