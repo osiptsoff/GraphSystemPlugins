@@ -3,7 +3,7 @@ import java.io.*;
 
 public class Main {
     public static void main(String[] args) {
-        var file = new File("C:\\IntelliJ\\IdeaProjects\\GraphSystemPlugins\\CompleteGraph\\src\\main\\java\\0.txt");
+        var file = new File("C:\\IntelliJ\\test\\graph (7).txt");
         var undirectedGraph = GraphFactory.loadUndirectedGraphFromFile(file);
         var CompleteGraph = new CompleteGraph();
 
