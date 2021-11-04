@@ -9,6 +9,7 @@
         <module name="LinearOrderRelation" />
         <module name="VertexesDegreesSum" />
         <module name="ThreeVertexConnected" />
+        <module name="OrientedTree" />
         <module name="CompleteGraph" />
       </profile>
     </annotationProcessing>
