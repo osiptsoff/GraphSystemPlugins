@@ -8,6 +8,7 @@
         <option value="$PROJECT_DIR$/CompleteGraph/pom.xml" />
         <option value="$PROJECT_DIR$/VertexesDegreesSum/pom.xml" />
         <option value="$PROJECT_DIR$/OrientedTree/pom.xml" />
+        <option value="$PROJECT_DIR$/IsolatedVertex/pom.xml" />
       </list>
     </option>
   </component>
