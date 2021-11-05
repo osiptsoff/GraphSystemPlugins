@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="VertexesDegreesSum" />
+        <module name="IsolatedVertex" />
         <module name="ThreeVertexConnected" />
         <module name="OrientedTree" />
         <module name="CompleteGraph" />
