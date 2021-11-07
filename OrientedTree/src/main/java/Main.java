@@ -3,7 +3,7 @@ import java.io.*;
 
 public class Main {
     public static void main(String[] args) {
-        var file = new File("C:\\IntelliJ\\test\\graph7.txt");
+        var file = new File("C:\\IntelliJ\\test\\expF(8).txt");
         var directedGraph = GraphFactory.loadDirectedGraphFromFile(file);
         var OrientedTree = new OrientedTree();
 
