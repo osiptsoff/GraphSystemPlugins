@@ -62,7 +62,7 @@ public class OrientedTree implements GraphProperty {
 
                 for (int i = 0; i < vertexCount; i++) {
                     if (!WasVisited[i])
-                      return false; //Если граф несвязный значит граф не является ориентированным деревом
+                        return false; //Если граф несвязный значит граф не является ориентированным деревом
                 }
                 return true;
             }
